@@ -60,7 +60,7 @@ const handleSearch = async () => {
       <Navbar />
       <div className="min-h-screen flex flex-col items-center justify-center bg-base-200 px-4">
         <div className="bg-black shadow-lg rounded-lg p-6 w-full max-w-md mt-5">
-          <h1 className="text-2xl font-bold mb-4 text-center">Search Your Result</h1>
+          <h1 className="text-2xl font-bold mb-4 text-center text-gray-50">Search Your Result</h1>
           <input
             type="text"
             placeholder="Enrollment Number"
@@ -108,7 +108,7 @@ const handleSearch = async () => {
         STUDENT VERIFICATION
       </h2>
       <p className="text-center text-sm mb-4">
-        Swami Vivekananda Research and Technology Center - (AFFILIATED TO VEER BAHADUR SINGH PURVANCHAL UNIVERSITY)
+        Swami Vivekananda Research and Technology Center
         <br />
         (Approved By The U.G.C. Act 1956 & AICTE)
       </p>

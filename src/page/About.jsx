@@ -1,15 +1,17 @@
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
+import aboutUs from "../assets/photo6.avif"; 
+import { useNavigate } from "react-router-dom";
 
 const About = () => {
+  const navigate = useNavigate();
   return (
     <div>
         <Navbar />
-        {/* about us details */}
         <section className="hero bg-base-200 min-h-screen">
           <div className="hero-content flex-col lg:flex-row-reverse">
             <img
-              src="https://img.daisyui.com/images/stock/photo-1635805737707-575885ab0820.webp"
+              src={aboutUs}
               className="w-full max-w-lg rounded-lg shadow-2xl"
               alt="College Campus"
             />
@@ -21,7 +23,7 @@ const About = () => {
                 Our institution fosters a vibrant learning environment where students are encouraged to
                 explore, innovate, and excel in their chosen fields.
               </p>
-              <button className="btn btn-primary">Explore Courses</button>
+              <button className="btn btn-primary" onClick={() => navigate("/programs/diploma")}>Explore Courses</button>
             </div>
           </div>
         </section>

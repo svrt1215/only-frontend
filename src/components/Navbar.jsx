@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import Logo from "../assets/logo.png"
+import Logo from "../assets/clglogo.png"
 
 const Navbar = () => {
   return (
@@ -38,6 +38,10 @@ const Navbar = () => {
                 <li><Link to="/programs/diploma">Diploma</Link></li>
                 <li><Link to="/programs/ba">B.A. (Bachelor of Arts)</Link></li>
                 <li><Link to="/programs/bsc">B.Sc. (Bachelor of Science)</Link></li>
+                <li><Link to="/programs/iti">I.T.I. (Industrial Training Institute)</Link></li>
+                <li><Link to="/programs/bed">B.Ed. (Bachelor of Education)</Link></li>
+                <li><Link to="/programs/msc">M.Sc. (Master of Science)</Link></li>
+                <li><Link to="/programs/ma">M.A. (Master of Arts)</Link></li>
               </ul>
               </details>
             </li>
@@ -78,6 +82,10 @@ const Navbar = () => {
               <li><Link to="/programs/diploma">Diploma</Link></li>
               <li><Link to="/programs/ba">B.A. (Bachelor of Arts)</Link></li>
               <li><Link to="/programs/bsc">B.Sc. (Bachelor of Science)</Link></li>
+              <li><Link to="/programs/iti">I.T.I. (Industrial Training Institute)</Link></li>
+              <li><Link to="/programs/bed">B.Ed. (Bachelor of Education)</Link></li>
+              <li><Link to="/programs/msc">M.Sc. (Master of Science)</Link></li>
+              <li><Link to="/programs/ma">M.A. (Master of Arts)</Link></li>
             </ul>
             </details>
           </li>

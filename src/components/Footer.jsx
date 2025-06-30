@@ -7,7 +7,7 @@ const Footer = () => {
   <nav>
     <h6 className="footer-title">Quick Link</h6>
     <Link to="/about" className="link link-hover">About Us</Link>
-    <Link to="/faculty" className="link link-hover">Our Faculty</Link>
+    {/* <Link to="/faculty" className="link link-hover">Our Faculty</Link> */}
     <Link to="/result" className="link link-hover">Result</Link>
     <Link to="/contact" className="link link-hover">Contact Us</Link>
   </nav>
@@ -17,9 +17,12 @@ const Footer = () => {
     <Link to="/programs/diploma" className="link link-hover">Diploma</Link>
     <Link to="/programs/ba" className="link link-hover">B.A. (Bachelor of Arts)</Link>
     <Link to="/programs/bsc" className="link link-hover">B.Sc. (Bachelor of Science)</Link>
+    <Link to="/programs/iti">I.T.I. (Industrial Training Institute)</Link>
+    <Link to="/programs/bed">B.Ed. (Bachelor of Education)</Link>
+    <Link to="/programs/msc">M.Sc. (Master of Science)</Link>
+    <Link to="/programs/ma">M.A. (Master of Arts)</Link>
   </nav>
   <nav>
-   
     <h6 className="footer-title">Contact Information</h6>
      <div className="flex items-center gap-2">
     <Mail className="h-5 w-5"/>
@@ -27,10 +30,10 @@ const Footer = () => {
     </div>
     <div className="flex items-center gap-2">
     <MapPin/>
-    <h1 className="">Swami Vivekananda Research and Technology Center, Chakramji Maunath Bhanjan, Mau Uttar Pradesh</h1>
+    <h1 className="">Swami Vivekananda Research and Technology Center, Unit No - 301, TS- Tower, 15, Ashok Marg, Civil Lines, Lucknow, Uttar Pradesh 226001, India</h1>
     </div>
   </nav>
-  <nav>
+  {/* <nav>
     <h6 className="footer-title">Social</h6>
     <div className="grid grid-flow-col gap-4">
       <a>
@@ -67,7 +70,7 @@ const Footer = () => {
         </svg>
       </a>
     </div>
-  </nav>
+  </nav> */}
 </footer>
   )
 }

@@ -1,4 +1,3 @@
-import React from 'react';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import { MapPin, Mail } from 'lucide-react';
@@ -15,20 +14,20 @@ const Contact = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
           {/* Address Card */}
-          <div className="bg-black shadow-md p-6 rounded-lg text-left flex items-start space-x-4">
+          <div className="bg-black text-gray-200 shadow-md p-6 rounded-lg text-left flex items-start space-x-4">
             <MapPin size={32} className="text-primary" />
             <div>
               <h2 className="text-xl font-semibold mb-2">Our Address</h2>
               <p>
                 Swami Vivekananda Research and Technology Center<br />
-                Chakramji Maunath Bhanjan, Mau Uttar Pradesh<br />
-                Uttar Pradesh, India
+                Unit No - 301, TS- Tower, 15, Ashok Marg, Civil Lines, Lucknow,<br />
+                 Uttar Pradesh 226001, India
               </p>
             </div>
           </div>
 
           {/* Email Card */}
-          <div className="bg-black shadow-md p-6 rounded-lg text-left flex items-start space-x-4">
+          <div className="bg-black text-gray-200 shadow-md p-6 rounded-lg text-left flex items-start space-x-4">
             <Mail size={32} className="text-primary" />
             <div>
               <h2 className="text-xl font-semibold mb-2">Email Us</h2>

@@ -1,10 +1,8 @@
-// index.js
 import { createRoot } from 'react-dom/client';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './index.css';
 import { Toaster } from 'react-hot-toast';
 
-// Pages
 import Home from './page/Home';
 import About from './page/About';
 import Facilities from './page/Facilities';

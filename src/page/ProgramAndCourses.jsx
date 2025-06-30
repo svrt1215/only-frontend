@@ -34,11 +34,12 @@ const courseData = {
     duration: '3 Years',
     eligibility: '10th Pass',
     coreSubjects: [
+      'Electrical Engineering',
+      'Civil Engineering',
+      'Mechanical Engineering',
+      'Hotel Management',
       'Engineering Drawing',
       'Basic Electronics',
-      'Machine Tools',
-      'Surveying',
-      'Electrical Measurements',
     ],
     careerOptions: [
       'Junior Engineer',
@@ -95,26 +96,71 @@ const courseData = {
     ],
   },
 
-  bcom: {
-    title: 'B.Com (Bachelor of Commerce)',
-    image: 'https://img.freepik.com/free-photo/business-people-meeting_53876-14423.jpg',
+  iti: {
+    title: 'ITI (Industrial Training Institute)',
+    image: 'https://img.freepik.com/free-photo/industrial-worker-welding-steel-structure_1150-11060.jpg',
     description:
-      'B.Com is a commerce-oriented degree focusing on accounting, finance, taxation, economics, and business law. It’s one of the most popular undergraduate courses in India, ideal for a career in banking, finance, or business management.',
-    duration: '3 Years',
-    eligibility: '10+2 in Commerce or any stream',
+      'ITI courses are technical training programs that focus on skill development in various trades such as electrician, fitter, welder, and mechanic. These are ideal for students seeking early employment in technical fields.',
+    duration: '1-2 Years',
+    eligibility: '10th Pass',
     coreSubjects: [
-      'Financial Accounting',
-      'Business Economics',
-      'Corporate Law',
-      'Income Tax',
-      'Auditing',
+      'Workshop Calculation',
+      'Engineering Drawing',
+      'Trade Theory',
+      'Practical Training',
+      'Safety and First Aid',
     ],
     careerOptions: [
-      'Accountant',
-      'Banking Officer',
-      'CA/CS/CMA (with further exams)',
-      'Business Analyst',
-      'Financial Consultant',
+      'Technician',
+      'Workshop Assistant',
+      'Machine Operator',
+      'Apprentice',
+      'Self-Employment',
+    ],
+  },
+
+  bed: {
+    title: 'B.Ed (Bachelor of Education)',
+    image: 'https://img.freepik.com/free-photo/teacher-classroom_1098-14545.jpg',
+    description:
+      'B.Ed is a 2-year undergraduate program for those aspiring to become teachers. It covers teaching methodologies, educational psychology, and classroom management, preparing graduates for teaching roles in schools.',
+    duration: '2 Years',
+    eligibility: 'Graduation in any discipline',
+    coreSubjects: [
+      'Educational Psychology',
+      'Teaching Methods',
+      'Curriculum and Instruction',
+      'Assessment and Evaluation',
+      'Educational Technology',
+    ],
+    careerOptions: [
+      'School Teacher',
+      'Education Counselor',
+      'Curriculum Developer',
+      'School Administrator',
+      'Education Consultant',
+    ],
+  },  
+
+  msc: {
+    title: 'M.Sc. (Master of Science)',
+    image: 'https://img.freepik.com/free-photo/scientific-researcher-lab_1098-15794.jpg',
+    description:
+      'M.Sc. is a postgraduate program for students who want to specialize in science subjects. It builds on B.Sc. foundations and leads to careers in research, data analysis, teaching, and science-based industries.',
+    duration: '2 Years',
+    eligibility: 'B.Sc. in relevant discipline',
+    coreSubjects: [
+      'Quantum Mechanics',
+      'Analytical Chemistry',
+      'Molecular Biology',
+      'Mathematical Modelling',
+    ],
+    careerOptions: [
+      'Research Scientist',
+      'Biotech Analyst',
+      'Lecturer',
+      'Lab Technician',
+      'Ph.D. Aspirant',
     ],
   },
 
@@ -140,49 +186,6 @@ const courseData = {
     ],
   },
 
-  msc: {
-    title: 'M.Sc. (Master of Science)',
-    image: 'https://img.freepik.com/free-photo/scientific-researcher-lab_1098-15794.jpg',
-    description:
-      'M.Sc. is a postgraduate program for students who want to specialize in science subjects. It builds on B.Sc. foundations and leads to careers in research, data analysis, teaching, and science-based industries.',
-    duration: '2 Years',
-    eligibility: 'B.Sc. in relevant discipline',
-    coreSubjects: [
-      'Quantum Mechanics',
-      'Analytical Chemistry',
-      'Molecular Biology',
-      'Mathematical Modelling',
-    ],
-    careerOptions: [
-      'Research Scientist',
-      'Biotech Analyst',
-      'Lecturer',
-      'Lab Technician',
-      'Ph.D. Aspirant',
-    ],
-  },
-
-  mtech: {
-    title: 'M.Tech (Master of Technology)',
-    image: 'https://img.freepik.com/free-photo/engineer-holding-blueprint-helmet_23-2148741205.jpg',
-    description:
-      'M.Tech is a 2-year postgraduate program that provides advanced knowledge and research skills in engineering and technology. It’s aimed at industry experts, teaching professionals, and researchers.',
-    duration: '2 Years',
-    eligibility: 'B.Tech or equivalent',
-    coreSubjects: [
-      'Advanced Computer Architecture',
-      'Finite Element Methods',
-      'Embedded Systems',
-      'Power Systems Analysis',
-    ],
-    careerOptions: [
-      'R&D Engineer',
-      'Professor/Lecturer',
-      'Project Manager',
-      'Tech Consultant',
-      'Ph.D. Researcher',
-    ],
-  },
 };
 
 const ProgramAndCourses = () => {

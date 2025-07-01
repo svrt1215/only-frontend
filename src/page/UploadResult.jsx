@@ -8,6 +8,9 @@ const UploadResult = () => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [showPreview, setShowPreview] = useState(false);
   const [modeOfStudy, setModeOfStudy] = useState('Year');
+  const [isUploading, setIsUploading] = useState(false);
+
+
 
   const yearOptions = ['I Year', 'II Year', 'III Year', 'IV Year'];
   const semesterOptions = ['I Sem', 'II Sem', 'III Sem', 'IV Sem', 'V Sem', 'VI Sem', 'VII Sem', 'VIII Sem'];
@@ -55,6 +58,7 @@ const handleSubjectChange = (index, field, value) => {
 };
 
 const handleSubmit = async () => {
+  setIsUploading(true);
   const formattedMarks = {};
   let hasBacklog = false;
 
@@ -81,13 +85,6 @@ const formattedDob = formatDateToDDMMYYYY(student.dob);
   };
 
   try {
-    // const res = await fetch(`${VITE_BASE_URL}/api/results`, {
-    //   method: 'POST',
-    //   headers: {
-    //     'Content-Type': 'application/json',
-    //   },
-    //   body: JSON.stringify(finalData),
-    // });
     const res = await fetch(`${import.meta.env.VITE_BASE_URL}/api/results`, {
   method: 'POST',
   headers: { 'Content-Type': 'application/json' },
@@ -108,6 +105,9 @@ const formattedDob = formatDateToDDMMYYYY(student.dob);
     console.error('Upload Error:', err);
     toast.error('Something went wrong while uploading the result.');
   }
+  finally{
+    setIsUploading(false);
+  }
 };
 
   return (
@@ -119,7 +119,7 @@ const formattedDob = formatDateToDDMMYYYY(student.dob);
             <h2 className="text-xl font-bold mb-4 text-center">Admin Access</h2>
             <input
               type="password"
-              className="input input-bordered w-full mb-4 text-white"
+              className="input input-bordered w-full mb-4 text-black"
               placeholder="Enter Credential Key"
               value={adminKey}
               onChange={(e) => setAdminKey(e.target.value)}
@@ -260,7 +260,7 @@ const formattedDob = formatDateToDDMMYYYY(student.dob);
 
             <div className="modal-action flex flex-wrap justify-center gap-2">
               <button className="btn" onClick={() => setShowPreview(false)}>Back / Edit</button>
-              <button className="btn btn-success" onClick={handleSubmit}>Confirm & Upload</button>
+              <button  className={`btn btn-success ${isUploading ? 'btn-disabled opacity-50 cursor-not-allowed' : ''}`} disabled={isUploading} onClick={handleSubmit}>{isUploading ? "Uploading..." : "Confirm & Upload"}</button>
             </div>
           </div>
         </dialog>

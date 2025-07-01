@@ -4,6 +4,7 @@ import Footer from '../components/Footer';
 import { toast } from 'react-hot-toast';
 
 const Result = () => {
+  const [isSearching, setIsSearching] = useState(false);
   const [enrollment, setEnrollment] = useState('');
   const [dob, setDob] = useState('');
   const [studentData, setStudentData] = useState(null);
@@ -20,6 +21,7 @@ const handleSearch = async () => {
     return;
   }
 
+  setIsSearching(true); 
   try {
     const formattedDob = formatDateToDDMMYYYY(dob);
     const res = await fetch(
@@ -53,6 +55,8 @@ const handleSearch = async () => {
     setStudentData(null);
     setError('Server error while searching. Please try again later.');
     toast.error('Server error occurred');
+  } finally{
+    setIsSearching(false);
   }
 };
   return (
@@ -96,9 +100,13 @@ const handleSearch = async () => {
             ))}
           </select>
 
-          <button className="btn btn-primary w-full" onClick={handleSearch}>
-            Search
-          </button>
+         <button
+  className={`btn btn-primary w-full ${isSearching ? 'btn-disabled cursor-not-allowed' : ''}`}
+  onClick={handleSearch}
+  disabled={isSearching}
+>
+  {isSearching ? "Searching..." : "Search"}
+</button>
           {error && <p className="text-red-500 mt-4 text-center">{error}</p>}
         </div>
         {studentData && (

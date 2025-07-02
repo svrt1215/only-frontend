@@ -34,9 +34,9 @@ const Home = () => {
      <div className="absolute inset-0 bg-gradient-to-r from-black/70 to-black/30 z-0" />
       <div className="relative z-10">
         <h1 className="text-4xl lg:text-5xl font-bold mb-4 drop-shadow-[0_3px_6px_rgba(255,255,255,0.3)] text-white">
-          Knowledge is Power, <span className="text-blue-300">Education is Freedom</span>
+          Knowledge is Power, Education is Freedom
         </h1>
-        <h2 className="text-2xl mb-2 drop-shadow-md text-orange-600 font-bold">
+        <h2 className="text-2xl mb-2 drop-shadow-md text-blue-400 font-bold">
           Swami Vivekananda Research and Technology Center
         </h2>
         <p className="mb-2 text-gray-200 italic">(Approved By The U.G.C. Act 1956 & AICTE)</p>
@@ -118,7 +118,7 @@ const Home = () => {
       <section className="py-16 px-6 bg-primary text-white text-center">
         <h2 className="text-3xl font-bold mb-4">Join Us on Your Educational Journey</h2>
         <p className="max-w-3xl mx-auto mb-6">
-          Swami Vivekananda Research and Technology Center is more than just a college; it's a community where students, faculty, and staff come together to learn, grow, and make a difference.
+          Swami Vivekananda Research and Technology Center is more than just a college; it's a community where students, faculty, and staff come together to learn, grow, and make a difference.
           We invite you to explore our website and discover how AHM can empower you to achieve your academic goals and build a brighter future.
         </p>
         <button className="btn btn-secondary" onClick={() => navigate("/programs/diploma")}>Visit Admissions Page</button>

@@ -9,15 +9,11 @@ const Result = () => {
   const [dob, setDob] = useState('');
   const [studentData, setStudentData] = useState(null);
   const [error, setError] = useState('');
-  const [semester, setSemester] = useState('');
-  const [modeOfStudy, setModeOfStudy] = useState('Year');
-  const semesterOptions = ['I Sem', 'II Sem', 'III Sem', 'IV Sem', 'V Sem', 'VI Sem', 'VII Sem', 'VIII Sem'];
-  const yearOptions = ['I Year', 'II Year', 'III Year', 'IV Year'];
   const VITE_BASE_URL = import.meta.env.VITE_BASE_URL;
 
 const handleSearch = async () => {
-  if (!enrollment || !dob || !semester) {
-    toast.error('Please fill all fields including semester');
+  if (!enrollment || !dob) {
+    toast.error('Please fill all fields');
     return;
   }
 
@@ -33,28 +29,14 @@ const handleSearch = async () => {
     }
 
     const data = await res.json();
-
-    // Check if student exists and has the requested semester
-    if (data && data.semesterResults && data.semesterResults[semester]) {
-      setStudentData({
-        ...data,
-        currentSemester: semester,
-        currentResult: data.semesterResults[semester],
-      });
-      setError('');
-      toast.success('Result found successfully');
-    } else {
-      setStudentData(null);
-      setError(data.semesterResults ? 
-        `No results found for ${semester}` : 
-        'No results found for the entered details');
-      toast.error('No result found for given details');
-    }
+    setStudentData(data);
+    setError('');
+    toast.success('Result found successfully');
   } catch (err) {
     console.error('Search Error:', err);
     setStudentData(null);
-    setError('Server error while searching. Please try again later.');
-    toast.error('Server error occurred');
+    setError('No results found for the entered details.');
+    toast.error('No result found for given details');
   } finally{
     setIsSearching(false);
   }
@@ -70,8 +52,6 @@ const handleSearch = async () => {
             placeholder="Enrollment Number"
             className="input input-bordered w-full mb-4"
             value={enrollment}
-            // onChange={(e) => setEnrollment(e.target.value)}
-            // onChange={(e) => setEnrollment(e.target.value.toLowerCase())}
             onChange={(e) => setEnrollment(e.target.value.toLowerCase().trim())}
           />
           <input
@@ -80,25 +60,6 @@ const handleSearch = async () => {
             value={dob}
             onChange={(e) => setDob(e.target.value)}
           />
-          <select
-            className="select select-bordered w-full mb-4"
-            value={modeOfStudy}
-            onChange={(e) => setModeOfStudy(e.target.value)}
-          >
-            <option value="Year">Year-wise</option>
-            <option value="Semester">Semester-wise</option>
-          </select>
-
-          <select
-            className="select select-bordered w-full mb-4"
-            value={semester}
-            onChange={(e) => setSemester(e.target.value)}
-          >
-            <option value="">Select {modeOfStudy === 'Semester' ? 'Semester' : 'Year'}</option>
-            {(modeOfStudy === 'Semester' ? semesterOptions : yearOptions).map((opt, i) => (
-              <option key={i} value={opt}>{opt}</option>
-            ))}
-          </select>
 
          <button
   className={`btn btn-primary w-full ${isSearching ? 'btn-disabled cursor-not-allowed' : ''}`}
@@ -107,9 +68,9 @@ const handleSearch = async () => {
 >
   {isSearching ? "Searching..." : "Search"}
 </button>
-          {error && <p className="text-red-500 mt-4 text-center">{error}</p>}
+      {error && <p className="text-red-500 mt-4 text-center">{error}</p>}
         </div>
-        {studentData && (
+{studentData && (
   <>
     <div id="printArea" className="bg-white text-black mt-8 p-6 shadow-lg rounded-lg w-full max-w-2xl border">
       <h2 className="text-xl font-bold text-center text-blue-600 border-b pb-2 mb-4">
@@ -122,52 +83,63 @@ const handleSearch = async () => {
       </p>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
-  <p><strong>Name:</strong> {studentData.name}</p>
-  <p><strong>Father Name:</strong> {studentData.fatherName}</p>
-  <p><strong>Mother Name:</strong> {studentData.motherName}</p>
-  <p><strong>Student Type:</strong> {studentData.studentType}</p>
-  <p><strong>Date Of Birth:</strong> {new Date(studentData.dob).toLocaleDateString('en-IN')}</p>
-  <p><strong>Institute:</strong> {studentData.institute}</p>
-  <p><strong>Religion:</strong> {studentData.religion}</p>
-  <p><strong>Enrollment No.:</strong> {studentData.enrollment}</p>
-  <p><strong>Course Name:</strong> {studentData.course}</p>
-  <p><strong>Result:</strong> {studentData.result}</p>
-  <p><strong>Gender:</strong> {studentData.gender}</p>
-  <p><strong>Session:</strong> {studentData.session}</p>
-</div>
-
+        <p><strong>Name:</strong> {studentData.name}</p>
+        <p><strong>Father Name:</strong> {studentData.fatherName}</p>
+        <p><strong>Mother Name:</strong> {studentData.motherName}</p>
+        <p><strong>Student Type:</strong> {studentData.studentType}</p>
+        <p><strong>Date Of Birth:</strong> {formatDobForDisplay(studentData.dob)}</p>
+        <p><strong>Institute:</strong> {studentData.institute}</p>
+        <p><strong>Religion:</strong> {studentData.religion}</p>
+        <p><strong>Enrollment No.:</strong> {studentData.enrollment}</p>
+        <p><strong>Course Name:</strong> {studentData.course}</p>
+        <p><strong>Gender:</strong> {studentData.gender}</p>
+        <p><strong>Session:</strong> {studentData.session}</p>
+      </div>
 
       <div className="mt-8">
-  <h3 className="font-bold text-center text-blue-600 border-b pb-2 mb-4">
-    CURRENT SEMESTER MARKS – {studentData.currentSemester}
-  </h3>
-  <div className="overflow-x-auto">
-    <table className="w-full text-sm border">
-      <thead className="bg-gray-200 text-black text-lg">
-        <tr>
-          <th className="p-2 border">Subject</th>
-          <th className="p-2 border">Marks</th>
+        <h3 className="font-bold text-center text-blue-600 border-b pb-2 mb-4">
+          YEAR-WISE RESULTS
+        </h3>
+        <div className="overflow-x-auto">
+  <table className="w-full text-sm border">
+    <thead className="bg-gray-200 text-black text-lg">
+      <tr>
+        <th className="p-2 border">Year</th>
+        <th className="p-2 border">Obtained</th>
+        <th className="p-2 border">Out Of</th>
+        <th className="p-2 border">%</th>
+        <th className="p-2 border">Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      {studentData.results && studentData.results.map((r, idx) => (
+        <tr key={idx} className={idx % 2 === 0 ? 'bg-gray-100' : 'bg-white'}>
+          <td className="p-2 border">{r.year}</td>
+          <td className="p-2 border">{r.obtained}</td>
+          <td className="p-2 border">{r.outOf}</td>
+          <td className="p-2 border">
+            {r.outOf > 0 ? ((r.obtained / r.outOf) * 100).toFixed(2) : '0.00'}
+          </td>
+          <td className="p-2 border">{r.status}</td>
         </tr>
-      </thead>
-      <tbody>
-        {Object.entries(studentData.currentResult.marks).map(([subject, mark], idx) => (
-          <tr key={subject} className={idx % 2 === 0 ? 'bg-gray-100' : 'bg-white'}>
-            <td className="p-2 border">{subject}</td>
-            <td className="p-2 border">{mark}</td>
-          </tr>
-        ))}
-        <tr className="bg-yellow-100 font-semibold">
-          <td className="p-2 border">Total</td>
-          <td className="p-2 border">{studentData.currentResult.total} ({studentData.currentResult.status})</td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
+      ))}
+    </tbody>
+  </table>
 </div>
-
+{studentData.results && studentData.results.length > 0 && (() => {
+  const totalObtained = studentData.results.reduce((sum, r) => sum + r.obtained, 0);
+  const totalOutOf = studentData.results.reduce((sum, r) => sum + r.outOf, 0);
+  const overallPercent = totalOutOf > 0 ? ((totalObtained / totalOutOf) * 100).toFixed(2) : '0.00';
+  return (
+    <div className="mt-4 text-right font-bold">
+      Overall Percentage: <span className="text-blue-600">{overallPercent}%</span>
+    </div>
+  );
+})()}
+      </div>
 
       <p className="text-xs mt-4 text-justify text-gray-600">
-        Note:- Swami Vivekananda Research and Technology Center is not responsible for any inadvertent error
+        Note:- Swami Vivekananda Research and Technology Center is not responsible for any inadvertent error
         that may have crept in the result being published on NET. The result published
         on net are for immediate information to the examinees. These cannot be treated
         as original mark sheets.
@@ -211,4 +183,11 @@ function formatDateToDDMMYYYY(dateString) {
   const month = String(date.getMonth() + 1).padStart(2, '0');
   const year = date.getFullYear();
   return `${day}${month}${year}`;
+}
+function formatDobForDisplay(dob) {
+  if (!dob || dob.length !== 8) return dob;
+  const day = dob.slice(0, 2);
+  const month = dob.slice(2, 4);
+  const year = dob.slice(4);
+  return `${day}/${month}/${year}`;
 }

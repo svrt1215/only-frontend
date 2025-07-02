@@ -165,7 +165,7 @@ const handleSearch = async () => {
       </button>
     </div>
   </>
-)}
+  )}
         {studentData === null && (
           <p className="text-red-500 mt-4 text-center">No results found for the entered details.</p>
         )}
